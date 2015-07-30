@@ -1,0 +1,52 @@
+version: 1
+
+tpa:
+  cooldown: 30
+
+home:
+  cooldown: 5
+  set-by-bed: true
+
+warp:
+  cooldown: 5
+
+spawn:
+  cooldown: 5
+
+messages:
+  error:
+    no-permission: "%red%You don't have permission to do that."
+    home-name-missing: "%red%You have to specify a name for your home."
+    home-exists: "%red%A home with that name already exists."
+    home-not-exists: "%red%You don't have a home by that name."
+    home-not-deleted: "%red%Failed to delete that home."
+    warp-name-missing: "%red%Warp name is missing."
+    warp-exists: "%red%A warp with that name already exists."
+    warp-not-exists: "%red%Found no warp with that name."
+    warp-not-deleted: "%red%Failed to delete that warp."
+    world-not-loaded: "%red%Target world NOT loaded! Prevented a server crash."
+    cooldown-wait: "%red%You need to wait %s second(s) before doing that."
+    tp-name-missing: "%red%You need to specify a target player."
+    tp-request-exists: "%red%Your target already has a teleportation request from you."
+    tp-not-allowed: "%red%Your target does not allow teleportation requests."
+    tp-no-requests: "%red%You do not have any teleportation requests."
+    tp-not-exists: "%red%You have no requests by that player."
+    tp-not-online: "%red%You can only accept requests from online players."
+    tp-rejected: "%red%Your teleportation request made to %s has been rejected."
+  success:
+    home-set: "%green%Home set! Use /home <name> to return to it."
+    home-deleted: "%green%Home successfully deleted!"
+    home-teleported: "%green%Welcome back to %s"
+    warp-set: "%green%Warp set! Use /warp <name> to warp to it."
+    warp-deleted: "%green%Warp successfully deleted!"
+    warp-teleported: "%green%Warped to %s"
+    tp-request-sent: "%green%Sent teleportation request to %s."
+    tp-status-changed: "%green%You %s allow teleportation requests."
+    tp-tpa-success: "%green%You teleported to %s."
+    tp-tpahere-success: "%green%You teleported %s to you."
+    tp-tpa-target-success: "%green%%s were teleported to you."
+    tp-tpahere-target-success: "%green%You were teleported to %s."
+    tp-target-rejected: "%green%Teleportation request has been rejected."
+  notify:
+    warp-public-exists: "%yellow%A public warp with the same name exists, add '-p' to warp to it."
+    tp-to-received: "%yellow%%s has asked to teleport to you, type '/tpaccept %s'"
