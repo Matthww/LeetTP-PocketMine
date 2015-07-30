@@ -1,0 +1,106 @@
+name: LeetTP
+main: Leet\LeetTP\LeetTP
+version: 0.0.2
+api: [1.12.0]
+author: ProjectInfinity
+
+commands:
+  sethome:
+    description: "Sets a home"
+    usage: "/sethome <name>"
+    permission: "leettp.command.sethome"
+  delhome:
+    description: "Deletes a home"
+    usage: "/delhome <name>"
+    permission: "leettp.command.delhome"
+  home:
+    description: "Teleports home"
+    usage: "/home <name>"
+    permission: "leettp.command.home"
+  warp:
+    description: "Warps to target location"
+    usage: "/warp <name>"
+    permission: "leettp.command.warp"
+  setwarp:
+    description: "Sets a warp"
+    usage: "/setwarp <name> <-p>"
+    permission: "leettp.command.setwarp"
+  delwarp:
+    description: "Deletes a warp"
+    usage: "/delwarp <name>"
+    permission: "leettp.command.delwarp"
+  listwarp:
+    description: "Lists all warps you can access"
+    usage: "/listwarp"
+    permission: "leettp.command.listwarp"
+  tpa:
+    description: "Asks to teleport to user"
+    usage: "/tpa <player>"
+    permission: "leettp.command.tpa"
+  tpahere:
+    description: "Asks to teleport a player to yourself"
+    usage: "/tpahere <player>"
+    permission: "leettp.command.tpahere"
+  tpaccept:
+    description: "Accepts a teleportation request"
+    usage: "/tpaccept <player>"
+    permission: "leettp.command.tpaccept"
+  tpdeny:
+    description: "Denies a teleportation request"
+    usage: "/tpdeny <player>"
+    permission: "leettp.command.tpdeny"
+  tpo:
+    description: "Teleports player to another player that is denying tp requests"
+    usage: "/tpo <player>"
+    permission: "leettp.command.tpo"
+  tptoggle:
+    description: "Toggle whether you allow teleportation requests or not"
+    usage: "/tptoggle"
+    permission: "leettp.command.tptoggle"
+
+permissions:
+  leettp.command.sethome:
+    default: op
+    description: "Allow creation of homes"
+  leettp.command.home:
+    default: op
+    description: "Allow teleporting to homes"
+  leettp.command.delhome:
+    default: op
+    description: "Allow deletion of homes"
+  leettp.command.warp:
+    default: op
+    description: "Allow teleportation to warps"
+  leettp.command.setwarp:
+    default: op
+    description: "Allow creation of warps"
+  leettp.command.delwarp:
+    default: op
+    description: "Allow deletion of warps"
+  leettp.command.listwarp:
+    default: op
+    description: "Allow listing of warps"
+  leettp.command.tpa:
+    default: op
+    description: "Allow asking to teleport to player"
+  leettp.command.tpahere:
+    default: op
+    description: "Allow asking to teleport player to yourself"
+  leettp.command.tpaccept:
+    default: true
+    description: "Allow accepting teleportation requests"
+  leettp.command.tpdeny:
+    default: true
+    description: "Allow denying teleportation requests"
+  leettp.command.tptoggle:
+    default: op
+    description: "Allow user to toggle whether to allow tp requests or not"
+  leettp.command.tpo:
+    default: op
+    description: "Allow teleporting to players that don't allow teleport requests"
+  leettp.command.tpohere:
+    default: op
+    description: "Allow teleporting a player to do you that don't allow teleport requests"
+  leettp.warp.public:
+    default: op
+    description: "Allow to make warps as public"
