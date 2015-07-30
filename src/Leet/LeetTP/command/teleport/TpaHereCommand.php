@@ -95,7 +95,12 @@ class TpaHereCommand implements CommandExecutor {
 
         }
 
-        $this->tpManager->addRequest($args[0], $sender->getName(), 2);
+        $result = $this->tpManager->addRequest($args[0], $sender->getName(), 2);
+
+        if($result === false) {
+            $this->plugin->getServer()->getLogger()->alert('Failed to create a tpahere request.');
+            return true;
+        }
 
         # Let both parties know that the request has been sent.
         $sender->sendMessage(sprintf($this->plugin->getMessageHandler()->tp_request_sent, $target->getName()));

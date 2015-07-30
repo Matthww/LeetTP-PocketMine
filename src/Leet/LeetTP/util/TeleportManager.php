@@ -39,7 +39,9 @@ class TeleportManager {
             'time' => time()
         ];
 
-        return isset($this->requests[strtolower($target)]) AND $this->requests[strtolower($target)]['sender'] === $sender;
+        if(!isset($this->requests[strtolower($target)]) or !isset($this->requests[strtolower($target)][$sender])) return false;
+
+        return $this->requests[strtolower($target)][$sender]['sender'] === $sender;
 
     }
 
