@@ -109,7 +109,7 @@ class TeleportManager {
      */
     public function getStatus($player) {
         $player = strtolower($player);
-        return isset($this->status[$player]) ? $this->status[$player] : true;
+        return (isset($this->status[$player])) ? $this->status[$player] : true;
     }
 
     /**
@@ -119,6 +119,7 @@ class TeleportManager {
      * @param $status
      */
     public function setStatus($player, $status) {
+        $player = strtolower($player);
         $this->status[$player] = $status;
     }
 
