@@ -52,7 +52,8 @@ class TpAcceptCommand implements CommandExecutor {
 
         foreach($requests as $player => $request) {
 
-            if(substr(strtolower($player), 0, strlen($args[0])) !== strtolower($args[0])) continue;
+            if(count($args) > 0) if(substr(strtolower($player), 0, strlen($args[0])) !== strtolower($args[0])) continue;
+
             # We found our request, let's finish up.
             $target = [
                 'sender' => $request['sender'],
