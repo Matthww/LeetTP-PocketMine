@@ -8,6 +8,8 @@ use Leet\LeetTP\command\home\HomeCommand;
 
 use Leet\LeetTP\command\teleport\TpAcceptCommand;
 use Leet\LeetTP\command\teleport\TpDenyCommand;
+use Leet\LeetTP\command\teleport\TpoCommand;
+use Leet\LeetTP\command\teleport\TpoHereCommand;
 use Leet\LeetTP\command\warp\DelWarpCommand;
 use Leet\LeetTP\command\warp\ListWarpCommand;
 use Leet\LeetTP\command\warp\SetWarpCommand;
@@ -64,10 +66,8 @@ class LeetTP extends PluginBase {
         $this->getCommand('tptoggle')->setExecutor(new TpToggleCommand($this));
         $this->getCommand('tpaccept')->setExecutor(new TpAcceptCommand($this));
         $this->getCommand('tpdeny')->setExecutor(new TpDenyCommand($this));
-
-        # TODO: Finish the commands below.
-        #$this->getCommand('tpo')->setExecutor();
-        #$this->getCommand('tpohere')->setExecutor();
+        $this->getCommand('tpo')->setExecutor(new TpoCommand($this));
+        $this->getCommand('tpohere')->setExecutor(new TpoHereCommand($this));
 
         # Register event listeners.
         $this->getServer()->getPluginManager()->registerEvents(new TPListener($this), $this);
