@@ -6,6 +6,7 @@ use Leet\LeetTP\command\home\DelHomeCommand;
 use Leet\LeetTP\command\home\SetHomeCommand;
 use Leet\LeetTP\command\home\HomeCommand;
 
+use Leet\LeetTP\command\teleport\BackCommand;
 use Leet\LeetTP\command\teleport\TpAcceptCommand;
 use Leet\LeetTP\command\teleport\TpDenyCommand;
 use Leet\LeetTP\command\teleport\TpoCommand;
@@ -20,11 +21,12 @@ use Leet\LeetTP\command\teleport\TpToggleCommand;
 use Leet\LeetTP\command\teleport\TpaCommand;
 
 use Leet\LeetTP\listener\TPListener;
+
 use Leet\LeetTP\util\HomeManager;
 use Leet\LeetTP\util\MessageHandler;
-
 use Leet\LeetTP\util\TeleportManager;
 use Leet\LeetTP\util\WarpManager;
+
 use pocketmine\plugin\PluginBase;
 
 class LeetTP extends PluginBase {
@@ -40,6 +42,8 @@ class LeetTP extends PluginBase {
     /** @var TeleportManager */
     protected $teleportManager;
 
+    public $deaths;
+
     public function onEnable() {
 
         self::$plugin = $this;
@@ -50,6 +54,7 @@ class LeetTP extends PluginBase {
         $this->homeManager = new HomeManager($this);
         $this->warpManager = new WarpManager($this);
         $this->teleportManager = new TeleportManager($this);
+        $this->deaths = [];
 
         # Register commands.
         $this->getCommand('home')->setExecutor(new HomeCommand($this));
@@ -69,6 +74,8 @@ class LeetTP extends PluginBase {
         $this->getCommand('tpo')->setExecutor(new TpoCommand($this));
         $this->getCommand('tpohere')->setExecutor(new TpoHereCommand($this));
 
+        $this->getCommand('back')->setExecutor(new BackCommand($this));
+
         # Register event listeners.
         $this->getServer()->getPluginManager()->registerEvents(new TPListener($this), $this);
 
@@ -84,6 +91,7 @@ class LeetTP extends PluginBase {
         unset($this->homeManager);
         unset($this->warpManager);
         unset($this->teleportManager);
+        unset($this->deaths);
 
         self::$plugin = null;
     }

@@ -33,6 +33,7 @@ messages:
     tp-not-exists: "%red%You have no requests by that player."
     tp-not-online: "%red%You can only accept requests from online players."
     tp-rejected: "%red%Your teleportation request made to %s has been rejected."
+    back-empty: "%red%You have to die before using /back."
   success:
     home-set: "%green%Home set! Use /home <name> to return to it."
     home-deleted: "%green%Home successfully deleted!"
@@ -47,6 +48,7 @@ messages:
     tp-tpa-target-success: "%green%%s were teleported to you."
     tp-tpahere-target-success: "%green%You were teleported to %s."
     tp-target-rejected: "%green%Teleportation request has been rejected."
+    back-teleported: "%green%You returned to your last death location."
   notify:
     warp-public-exists: "%yellow%A public warp with the same name exists, add '-p' to warp to it."
     tp-to-received: "%yellow%%s has asked to teleport to you, type '/tpaccept %s'"

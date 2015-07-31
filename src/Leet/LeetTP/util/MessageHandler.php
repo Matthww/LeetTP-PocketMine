@@ -49,6 +49,9 @@ class MessageHandler {
     public $tp_target_rejected;
     public $tp_rejected;
 
+    public $back_empty;
+    public $back_teleported;
+
     public function __construct(LeetTP $plugin) {
 
         self::$colors = (new \ReflectionClass(TextFormat::class))->getConstants();
@@ -92,6 +95,9 @@ class MessageHandler {
         $this->tp_tpahere_target_success = $this->parseColors($plugin->getConfig()->getNested('messages.success.tp-tpahere-target-success', '%green%You were teleported to %s.'));
         $this->tp_target_rejected = $this->parseColors($plugin->getConfig()->getNested('messages.success.tp-target-rejected', '%green%Teleportation request has been rejected.'));
         $this->tp_rejected = $this->parseColors($plugin->getConfig()->getNested('messages.error.tp-rejected', '%red%Your teleportation request made to %s has been rejected.'));
+
+        $this->back_empty = $this->parseColors($plugin->getConfig()->getNested('messages.error.back-empty', '%red%You have to die before using /back.'));
+        $this->back_teleported = $this->parseColors($plugin->getConfig()->getNested('messages.success.back-teleported', '%green%You returned to your last death location.'));
 
     }
 

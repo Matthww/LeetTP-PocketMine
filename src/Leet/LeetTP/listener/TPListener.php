@@ -5,7 +5,9 @@ namespace Leet\LeetTP\listener;
 use Leet\LeetTP\LeetTP;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerBedEnterEvent;
+use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\Player;
 
 class TPListener implements Listener {
 
@@ -39,6 +41,24 @@ class TPListener implements Listener {
         if(!isset($homes['bed'])) return;
 
         $event->getPlayer()->teleport($this->plugin->getHomeManager()->homeToLocation($event->getPlayer()->getName(), 'bed'));
+
+    }
+
+    /**
+     * Records the location of the death of the player
+     * so it can be returned to using /back.
+     *
+     * @param PlayerDeathEvent $event
+     */
+    public function onPlayerDeath(PlayerDeathEvent $event) {
+
+        # Unsure if PocketMine fires PlayerDeathEvent on other DeathEvents... It may.
+        if(!($event->getEntity() instanceof Player)) return;
+
+        # Only process if they can access the back command.
+        if(!$event->getEntity()->hasPermission('leettp.command.back')) return;
+
+        $this->plugin->deaths[$event->getEntity()->getName()] = $event->getEntity()->getPosition();
 
     }
 
