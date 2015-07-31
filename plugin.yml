@@ -53,10 +53,18 @@ commands:
     description: "Teleports player to another player that is denying tp requests"
     usage: "/tpo <player>"
     permission: "leettp.command.tpo"
+  tpohere:
+    description: "Teleports player to yourself when target is denying tp requests"
+    usage: "/tpohere <player>"
+    permission: "leettp.command.tpohere"
   tptoggle:
     description: "Toggle whether you allow teleportation requests or not"
     usage: "/tptoggle"
     permission: "leettp.command.tptoggle"
+  back:
+    description: "Teleports you to your last recorded death location"
+    usage: "/back"
+    permission: "leettp.command.back"
 
 permissions:
   leettp.command.sethome:
