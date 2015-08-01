@@ -103,7 +103,7 @@ class MessageHandler {
         $this->back_teleported = $this->parseColors($plugin->getConfig()->getNested('messages.success.back-teleported', '%green%You returned to your last death location.'));
 
         $this->spawn_set = $this->parseColors($plugin->getConfig()->getNested('messages.success.spawn-set', '%green%Spawn location set.'));
-        $this->spawn_set = $this->parseColors($plugin->getConfig()->getNested('messages.success.spawn-teleported', '%green%Teleported to spawn.'));
+        $this->spawn_teleported = $this->parseColors($plugin->getConfig()->getNested('messages.success.spawn-teleported', '%green%Teleported to spawn.'));
 
     }
 
