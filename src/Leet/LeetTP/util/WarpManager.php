@@ -136,8 +136,6 @@ class WarpManager {
 
         $this->warps->set($player, $warps);
 
-        var_dump($this->getWarp($player, $warp['name']));
-
         return $this->getWarp($player, $warp['name']) !== null;
 
     }
