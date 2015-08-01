@@ -76,16 +76,16 @@ commands:
 
 permissions:
   leettp.command.sethome:
-    default: op
+    default: true
     description: "Allow creation of homes"
   leettp.command.home:
-    default: op
+    default: true
     description: "Allow teleporting to homes"
   leettp.command.delhome:
-    default: op
+    default: true
     description: "Allow deletion of homes"
   leettp.command.warp:
-    default: op
+    default: true
     description: "Allow teleportation to warps"
   leettp.command.setwarp:
     default: op
@@ -94,13 +94,13 @@ permissions:
     default: op
     description: "Allow deletion of warps"
   leettp.command.listwarp:
-    default: op
+    default: true
     description: "Allow listing of warps"
   leettp.command.tpa:
-    default: op
+    default: true
     description: "Allow asking to teleport to player"
   leettp.command.tpahere:
-    default: op
+    default: true
     description: "Allow asking to teleport player to yourself"
   leettp.command.tpaccept:
     default: true
@@ -109,7 +109,7 @@ permissions:
     default: true
     description: "Allow denying teleportation requests"
   leettp.command.tptoggle:
-    default: op
+    default: true
     description: "Allow user to toggle whether to allow tp requests or not"
   leettp.command.tpo:
     default: op
@@ -118,10 +118,10 @@ permissions:
     default: op
     description: "Allow teleporting a player to do you that don't allow teleport requests"
   leettp.command.back:
-    default: op
+    default: true
     description: "Allow teleporting back to last recorded death location"
   leettp.command.spawn:
-    default: op
+    default: true
     description: "Allow teleporting to spawn"
   leettp.command.setspawn:
     default: op
