@@ -35,6 +35,11 @@ class DelWarpCommand implements CommandExecutor {
             return true;
         }
 
+        if($args[0] === '') {
+            $sender->sendMessage($this->plugin->getMessageHandler()->warp_name_missing);
+            return true;
+        }
+
         $warp = $this->plugin->getWarpManager()->getWarp($sender->getName(), $args[0]);
 
         # Check if the player has a warp with that name.

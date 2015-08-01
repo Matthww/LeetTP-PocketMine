@@ -52,6 +52,11 @@ class SetWarpCommand implements CommandExecutor {
             }
         }
 
+        if($args[0] === '') {
+            $sender->sendMessage($this->plugin->getMessageHandler()->warp_name_missing);
+            return true;
+        }
+
         if($isPublic === true) {
 
             $warps = $this->plugin->getWarpManager()->getPublic();

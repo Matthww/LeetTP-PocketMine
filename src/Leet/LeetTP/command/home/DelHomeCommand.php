@@ -35,6 +35,11 @@ class DelHomeCommand implements CommandExecutor {
             return true;
         }
 
+        if($args[0] === '') {
+            $sender->sendMessage($this->plugin->getMessageHandler()->home_name_missing);
+            return true;
+        }
+
         $home = $this->plugin->getHomeManager()->getHome($sender->getName(), $args[0]);
 
         # A home by that name does not exist.

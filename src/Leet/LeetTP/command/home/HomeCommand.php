@@ -53,6 +53,8 @@ class HomeCommand implements CommandExecutor {
             $home = 'home';
         }
 
+        if($args[0] === '') $home = 'home';
+
         # Use name if home is still not set.
         if($home === null) {
             $home = $args[0];

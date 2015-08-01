@@ -45,6 +45,11 @@ class WarpCommand implements CommandExecutor {
             return true;
         }
 
+        if($args[0] === '') {
+            $sender->sendMessage($this->plugin->getMessageHandler()->warp_name_missing);
+            return true;
+        }
+
         $isPublic = false;
 
         if(count($args) > 1) {
