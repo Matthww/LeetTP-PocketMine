@@ -49,6 +49,8 @@ messages:
     tp-tpahere-target-success: "%green%You were teleported to %s."
     tp-target-rejected: "%green%Teleportation request has been rejected."
     back-teleported: "%green%You returned to your last death location."
+    spawn-set: "%green%Spawn location set."
+    spawn-teleported: "%green%Teleported to spawn."
   notify:
     warp-public-exists: "%yellow%A public warp with the same name exists, add '-p' to warp to it."
     tp-to-received: "%yellow%%s has asked to teleport to you, type '/tpaccept %s'"

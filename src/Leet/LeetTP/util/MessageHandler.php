@@ -52,6 +52,9 @@ class MessageHandler {
     public $back_empty;
     public $back_teleported;
 
+    public $spawn_set;
+    public $spawn_teleported;
+
     public function __construct(LeetTP $plugin) {
 
         self::$colors = (new \ReflectionClass(TextFormat::class))->getConstants();
@@ -98,6 +101,9 @@ class MessageHandler {
 
         $this->back_empty = $this->parseColors($plugin->getConfig()->getNested('messages.error.back-empty', '%red%You have to die before using /back.'));
         $this->back_teleported = $this->parseColors($plugin->getConfig()->getNested('messages.success.back-teleported', '%green%You returned to your last death location.'));
+
+        $this->spawn_set = $this->parseColors($plugin->getConfig()->getNested('messages.success.spawn-set', '%green%Spawn location set.'));
+        $this->spawn_set = $this->parseColors($plugin->getConfig()->getNested('messages.success.spawn-teleported', '%green%Teleported to spawn.'));
 
     }
 

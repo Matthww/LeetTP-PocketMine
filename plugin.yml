@@ -1,6 +1,6 @@
 name: LeetTP
 main: Leet\LeetTP\LeetTP
-version: 0.0.2
+version: 0.0.4
 api: [1.12.0]
 author: ProjectInfinity
 
@@ -65,6 +65,14 @@ commands:
     description: "Teleports you to your last recorded death location"
     usage: "/back"
     permission: "leettp.command.back"
+  spawn:
+    description: "Teleports the sender to spawn"
+    usage: "/spawn"
+    permission: "leettp.command.spawn"
+  setspawn:
+    description: "Sets the spawn for the current world."
+    usage: "/setspawn"
+    permission: "leettp.command.setspawn"
 
 permissions:
   leettp.command.sethome:
@@ -109,6 +117,15 @@ permissions:
   leettp.command.tpohere:
     default: op
     description: "Allow teleporting a player to do you that don't allow teleport requests"
+  leettp.command.back:
+    default: op
+    description: "Allow teleporting back to last recorded death location"
+  leettp.command.spawn:
+    default: op
+    description: "Allow teleporting to spawn"
+  leettp.command.setspawn:
+    default: op
+    description: "Allow setting the spawn location of the current world"
   leettp.warp.public:
     default: op
     description: "Allow to make warps as public"

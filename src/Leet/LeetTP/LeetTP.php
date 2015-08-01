@@ -6,6 +6,8 @@ use Leet\LeetTP\command\home\DelHomeCommand;
 use Leet\LeetTP\command\home\SetHomeCommand;
 use Leet\LeetTP\command\home\HomeCommand;
 
+use Leet\LeetTP\command\spawn\SetSpawnCommand;
+use Leet\LeetTP\command\spawn\SpawnCommand;
 use Leet\LeetTP\command\teleport\BackCommand;
 use Leet\LeetTP\command\teleport\TpAcceptCommand;
 use Leet\LeetTP\command\teleport\TpDenyCommand;
@@ -42,6 +44,8 @@ class LeetTP extends PluginBase {
     /** @var TeleportManager */
     protected $teleportManager;
 
+    public $spawnCooldown;
+
     public $deaths;
 
     public function onEnable() {
@@ -54,6 +58,7 @@ class LeetTP extends PluginBase {
         $this->homeManager = new HomeManager($this);
         $this->warpManager = new WarpManager($this);
         $this->teleportManager = new TeleportManager($this);
+        $this->spawnCooldown = $this->getConfig()->getNested('spawn.cooldown', 5);
         $this->deaths = [];
 
         # Register commands.
@@ -76,6 +81,9 @@ class LeetTP extends PluginBase {
 
         $this->getCommand('back')->setExecutor(new BackCommand($this));
 
+        $this->getCommand('spawn')->setExecutor(new SpawnCommand($this));
+        $this->getCommand('setspawn')->setExecutor(new SetSpawnCommand($this));
+
         # Register event listeners.
         $this->getServer()->getPluginManager()->registerEvents(new TPListener($this), $this);
 
@@ -92,6 +100,7 @@ class LeetTP extends PluginBase {
         unset($this->warpManager);
         unset($this->teleportManager);
         unset($this->deaths);
+        unset($this->spawnCooldown);
 
         self::$plugin = null;
     }
