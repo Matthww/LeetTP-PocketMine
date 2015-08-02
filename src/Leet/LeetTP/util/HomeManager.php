@@ -9,7 +9,6 @@ use pocketmine\level\Location;
 
 class HomeManager {
 
-    # TODO: Ensure that STRTOLOWER is called so case-sensitivity is not an issue.
 
     /** @var LeetTP $plugin */
     private $plugin;
@@ -33,6 +32,38 @@ class HomeManager {
      */
     public function load() {
         $this->homes = Flintstone::load('homes', ['dir' => $this->plugin->getDataFolder(), 'gzip' => true]);
+
+        # Check if we should migrate EssentialsTP data.
+        if(count($this->homes->getAll()) === 0) {
+            if(file_exists($this->plugin->getServer()->getPluginPath().'essentialsTP/essentials_tp.db')) {
+
+                $essentialsDB = new \SQLite3($this->plugin->getServer()->getPluginPath().'essentialsTP/essentials_tp.db');
+
+                $sql = 'SELECT * FROM homes';
+
+                $result = $essentialsDB->query($sql);
+
+                while($row = $result->fetchArray(SQLITE3_ASSOC)) {
+                    $this->setHome(
+                        $row['player'],
+                        [
+                            'name' => $row['title'],
+                            'world' => $row['world'],
+                            'x' => $row['x'],
+                            'y' => $row['y'],
+                            'z' => $row['z'],
+                            'yaw' => 0.00,
+                            'pitch' => 0.00,
+                        ]
+                    );
+                    $this->plugin->getLogger()->info('Imported a home for '.$row['player']);
+                }
+
+                # All done, close down the database.
+                $essentialsDB->close();
+
+            }
+        }
     }
 
     public function disable() {
