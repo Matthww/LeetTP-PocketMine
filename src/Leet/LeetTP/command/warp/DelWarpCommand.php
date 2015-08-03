@@ -43,9 +43,21 @@ class DelWarpCommand implements CommandExecutor {
         $warp = $this->plugin->getWarpManager()->getWarp($sender->getName(), $args[0]);
 
         # Check if the player has a warp with that name.
-        if($warp === null) {
+        if($warp === null AND !$sender->isOp()) {
             $sender->sendMessage($this->plugin->getMessageHandler()->warp_not_exists);
             return true;
+        }
+
+        # Sender may be attempting to delete a public warp that isn't theirs.
+        if($warp === null) {
+            $warps = $this->plugin->getWarpManager()->getPublic();
+            $player = null;
+            if(isset($warps[strtolower($args[0])])) $player = $warps[strtolower($args[0])];
+            $warp = $this->plugin->getWarpManager()->getWarp($player, $args[0]);
+            if($warp === null) {
+                $sender->sendMessage(TextFormat::RED.'Could not find a public warp named that from another player.');
+                return true;
+            }
         }
 
         # If the warp is public, remove the pointer.
