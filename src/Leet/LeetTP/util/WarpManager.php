@@ -158,6 +158,7 @@ class WarpManager {
         if($warps === false) $warps = [];
 
         $warps[strtolower($warp['name'])] = [
+            'name' => $warp['name'],
             'world' => $warp['world'],
             'x' => $warp['x'],
             'y' => $warp['y'],
