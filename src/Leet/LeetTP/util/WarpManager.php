@@ -40,7 +40,7 @@ class WarpManager {
         }
 
         # Check if we should migrate EssentialsTP data.
-      /*  if(count($this->warps->getAll()) === 0) {
+        if(count($this->warps->getAll()) === 0) {
             if(file_exists($this->plugin->getServer()->getPluginPath().'essentialsTP/essentials_tp.db')) {
 
                 $essentialsDB = new \SQLite3($this->plugin->getServer()->getPluginPath().'essentialsTP/essentials_tp.db');
@@ -51,7 +51,7 @@ class WarpManager {
 
                 while($row = $result->fetchArray(SQLITE3_ASSOC)) {
                     $this->setWarp(
-                        $row['player'],
+                        'b3builder',
                         [
                             'name' => $row['title'],
                             'world' => $row['world'],
@@ -60,10 +60,10 @@ class WarpManager {
                             'z' => $row['z'],
                             'yaw' => 0.00,
                             'pitch' => 0.00,
-                            'public' => false
+                            'public' => true
                         ]
                     );
-                    $this->plugin->getLogger()->info('Imported a home for '.$row['player']);
+                    $this->plugin->getLogger()->info('Imported warp '.$row['title']);
                 }
 
                 # All done, close down the database.
@@ -71,7 +71,7 @@ class WarpManager {
 
             }
         }
-*/
+
     }
 
     public function disable() {
