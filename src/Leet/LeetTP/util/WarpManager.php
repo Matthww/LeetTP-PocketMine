@@ -31,14 +31,6 @@ class WarpManager {
         $this->warps = Flintstone::load('warps', ['dir' => $this->plugin->getDataFolder(), 'gzip' => true]);
         $this->public = [];
 
-        # Load public warp pointers.
-        foreach($this->warps->getAll() as $player => $warps) {
-            foreach($warps as $name => $warp) {
-                if($warp['public'] === false) continue;
-                $this->public[strtolower($name)] = $player;
-            }
-        }
-
         # Check if we should migrate EssentialsTP data.
         if(count($this->warps->getAll()) === 0) {
             if(file_exists($this->plugin->getServer()->getPluginPath().'essentialsTP/essentials_tp.db')) {
@@ -69,6 +61,13 @@ class WarpManager {
                 # All done, close down the database.
                 $essentialsDB->close();
 
+            }
+        }
+        # Load public warp pointers.
+        foreach($this->warps->getAll() as $player => $warps) {
+            foreach($warps as $name => $warp) {
+                if($warp['public'] === false) continue;
+                $this->public[strtolower($name)] = $player;
             }
         }
 
