@@ -42,9 +42,11 @@ class SetHomeCommand implements CommandExecutor {
             $home = 'home';
         }
 
-        if($args[0] === '') {
-            $sender->sendMessage($this->plugin->getMessageHandler()->home_name_missing);
-            return true;
+        if(count($args) >= 1) {
+            if($args[0] === '') {
+                $sender->sendMessage($this->plugin->getMessageHandler()->home_name_missing);
+                return true;
+            }
         }
 
         # Use name if home is still not set.
