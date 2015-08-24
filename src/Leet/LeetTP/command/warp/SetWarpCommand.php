@@ -41,13 +41,13 @@ class SetWarpCommand implements CommandExecutor {
             return true;
         }
 
-        $isPublic = false;
+        $isPublic = true;
 
         # Iterate arguments and see if the public modifier is present.
         if(count($args) > 1) {
             foreach($args as $argument) {
                 if(strtolower($argument) !== '-p') continue;
-                $isPublic = true;
+                $isPublic = false;
                 break;
             }
         }

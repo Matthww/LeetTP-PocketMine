@@ -50,20 +50,20 @@ class WarpCommand implements CommandExecutor {
             return true;
         }
 
-        $isPublic = false;
+        $isPublic = true;
 
         if(count($args) > 1) {
 
             foreach($args as $argument) {
                 if(strtolower($argument) !== '-p') continue;
-                $isPublic = true;
+                $isPublic = false;
                 break;
             }
 
         }
 
         $warp = null;
-        $publicExists = false;
+        $privateExists = false;
 
         if($isPublic === true) {
             $warps = $this->plugin->getWarpManager()->getPublic();
@@ -89,16 +89,14 @@ class WarpCommand implements CommandExecutor {
                 return true;
             }
 
-            $warps = $this->plugin->getWarpManager()->getPublic();
-
             # Check if a warp with the same name exists that is public.
-            if(isset($warps[strtolower($args[0])]) AND $warps[strtolower($args[0])] !== $sender->getName()) {
-                $publicExists = true;
+            if($isPublic === true AND $warp !== null) {
+                $privateExists = true;
             }
 
         }
 
-        if($publicExists === true) $sender->sendMessage($this->plugin->getMessageHandler()->warp_public_exists);
+        if($privateExists === true) $sender->sendMessage($this->plugin->getMessageHandler()->warp_public_exists);
 
         # Check if world is loaded.
         if(!$this->plugin->getServer()->isLevelLoaded($warp->getLevel()->getName())) {
