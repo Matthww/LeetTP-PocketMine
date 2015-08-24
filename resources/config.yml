@@ -52,5 +52,5 @@ messages:
     spawn-set: "%green%Spawn location set."
     spawn-teleported: "%green%Teleported to spawn."
   notify:
-    warp-public-exists: "%yellow%A public warp with the same name exists, add '-p' to warp to it."
+    warp-private-exists: "%yellow%A private warp with the same name exists, add '-p' to warp to it."
     tp-to-received: "%yellow%%s has asked to teleport to you, type '/tpaccept %s'"

@@ -52,6 +52,11 @@ class SetWarpCommand implements CommandExecutor {
             }
         }
 
+        if($isPublic === true AND !$sender->hasPermission('leettp.warp.public')) {
+            $sender->sendMessage($this->plugin->getMessageHandler()->no_permission);
+            return true;
+        }
+
         if($args[0] === '') {
             $sender->sendMessage($this->plugin->getMessageHandler()->warp_name_missing);
             return true;

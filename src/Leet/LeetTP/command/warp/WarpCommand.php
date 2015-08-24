@@ -96,7 +96,7 @@ class WarpCommand implements CommandExecutor {
 
         }
 
-        if($privateExists === true) $sender->sendMessage($this->plugin->getMessageHandler()->warp_public_exists);
+        if($privateExists === true) $sender->sendMessage($this->plugin->getMessageHandler()->warp_private_exists);
 
         # Check if world is loaded.
         if(!$this->plugin->getServer()->isLevelLoaded($warp->getLevel()->getName())) {

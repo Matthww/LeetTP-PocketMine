@@ -9,6 +9,7 @@ class MessageHandler {
 
     private $plugin;
     private static $colors;
+    private $version;
 
     public $no_permission;
 
@@ -26,7 +27,7 @@ class MessageHandler {
     public $warp_not_exists;
     public $warp_deleted;
     public $warp_not_deleted;
-    public $warp_public_exists;
+    public $warp_private_exists;
     public $warp_teleported;
 
     public $cooldown_wait;
@@ -60,6 +61,8 @@ class MessageHandler {
         self::$colors = (new \ReflectionClass(TextFormat::class))->getConstants();
         $this->plugin = $plugin;
 
+        $this->version = $plugin->getConfig()->get('version');
+
         $this->no_permission = $this->parseColors($plugin->getConfig()->getNested('messages.error.no-permission', '%red%You don\'t have permission to do that.'));
 
         $this->cooldown_wait = $this->parseColors($plugin->getConfig()->getNested('messages.error.cooldown-wait', '%red%You need to wait %s second(s) before doing that.'));
@@ -78,7 +81,7 @@ class MessageHandler {
         $this->warp_not_exists = $this->parseColors($plugin->getConfig()->getNested('messages.error.warp-not-exists', '%red%Found no warp with that name.'));
         $this->warp_deleted = $this->parseColors($plugin->getConfig()->getNested('messages.success.warp-deleted', '%green%Warp successfully deleted!'));
         $this->warp_not_deleted = $this->parseColors($plugin->getConfig()->getNested('messages.error.warp-not-deleted', '%red%Failed to delete that warp.'));
-        $this->warp_public_exists = $this->parseColors($plugin->getConfig()->getNested('messages.notify.warp-public-exists', '%yellow%A public warp with the same name exists, add \'-p\' to warp to it.'));
+        $this->warp_private_exists = $this->parseColors($plugin->getConfig()->getNested('messages.notify.warp-private-exists', '%yellow%A private warp with the same name exists, add \'-p\' to warp to it.'));
         $this->warp_teleported = $this->parseColors($plugin->getConfig()->getNested('messages.success.warp-teleported', '%green%Warped to %s'));
 
         $this->world_not_loaded = $this->parseColors($plugin->getConfig()->getNested('messages.error.world-not-loaded', '%red%Target world NOT loaded! Prevented a server crash.'));
@@ -105,6 +108,24 @@ class MessageHandler {
         $this->spawn_set = $this->parseColors($plugin->getConfig()->getNested('messages.success.spawn-set', '%green%Spawn location set.'));
         $this->spawn_teleported = $this->parseColors($plugin->getConfig()->getNested('messages.success.spawn-teleported', '%green%Teleported to spawn.'));
 
+        # Migrate config.
+        if($this->version == 1) {
+            $this->plugin->getLogger()->info('Migrating configuration to version 2.');
+            $this->plugin->getConfig()->setNested('messages.notify.warp-private-exists', '%yellow%A private warp with the same name exists, add \'-p\' to warp to it.');
+            # Get the messages array so we can remove content from it.
+            $messages = $this->plugin->getConfig()->get('messages');
+            unset($messages['notify']['warp-public-exists']);
+            # All done editing, now put the array back into the file.
+            $this->plugin->getConfig()->set('messages', $messages);
+            # Assign message so no reload is needed.
+            $this->warp_private_exists = $this->parseColors($plugin->getConfig()->getNested('messages.notify.warp-private-exists', '%yellow%A private warp with the same name exists, add \'-p\' to warp to it.'));
+
+
+            # Up version number.
+            $this->plugin->getConfig()->set('version', 2);
+            $this->plugin->saveConfig();
+            $this->plugin->reloadConfig();
+        }
     }
 
     /**
