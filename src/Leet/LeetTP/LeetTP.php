@@ -3,6 +3,7 @@
 namespace Leet\LeetTP;
 
 use Leet\LeetTP\command\home\DelHomeCommand;
+use Leet\LeetTP\command\home\HomesCommand;
 use Leet\LeetTP\command\home\SetHomeCommand;
 use Leet\LeetTP\command\home\HomeCommand;
 
@@ -14,7 +15,7 @@ use Leet\LeetTP\command\teleport\TpDenyCommand;
 use Leet\LeetTP\command\teleport\TpoCommand;
 use Leet\LeetTP\command\teleport\TpoHereCommand;
 use Leet\LeetTP\command\warp\DelWarpCommand;
-use Leet\LeetTP\command\warp\ListWarpCommand;
+use Leet\LeetTP\command\warp\WarpsCommand;
 use Leet\LeetTP\command\warp\SetWarpCommand;
 use Leet\LeetTP\command\warp\WarpCommand;
 
@@ -65,11 +66,12 @@ class LeetTP extends PluginBase {
         $this->getCommand('home')->setExecutor(new HomeCommand($this));
         $this->getCommand('sethome')->setExecutor(new SetHomeCommand($this));
         $this->getCommand('delhome')->setExecutor(new DelHomeCommand($this));
+        $this->getCommand('homes')->setExecutor(new HomesCommand($this));
 
         $this->getCommand('warp')->setExecutor(new WarpCommand($this));
         $this->getCommand('setwarp')->setExecutor(new SetWarpCommand($this));
         $this->getCommand('delwarp')->setExecutor(new DelWarpCommand($this));
-        $this->getCommand('listwarp')->setExecutor(new ListWarpCommand($this));
+        $this->getCommand('warps')->setExecutor(new WarpsCommand($this));
 
         $this->getCommand('tpa')->setExecutor(new TpaCommand($this));
         $this->getCommand('tpahere')->setExecutor(new TpaHereCommand($this));

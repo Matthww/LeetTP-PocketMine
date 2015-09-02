@@ -17,6 +17,11 @@ commands:
     description: "Teleports home"
     usage: "/home <name>"
     permission: "leettp.command.home"
+  homes:
+    description: "Lists owned homes"
+    usage: "/homes"
+    aliases: [listhome]
+    permission: "leettp.command.homes"
   warp:
     description: "Warps to target location"
     usage: "/warp <name>"
@@ -29,10 +34,11 @@ commands:
     description: "Deletes a warp"
     usage: "/delwarp <name>"
     permission: "leettp.command.delwarp"
-  listwarp:
+  warps:
     description: "Lists all warps you can access"
-    usage: "/listwarp"
-    permission: "leettp.command.listwarp"
+    usage: "/warps"
+    aliases: [listwarp]
+    permission: "leettp.command.warps"
   tpa:
     description: "Asks to teleport to user"
     usage: "/tpa <player>"
@@ -81,6 +87,9 @@ permissions:
   leettp.command.home:
     default: true
     description: "Allow teleporting to homes"
+  leettp.command.homes:
+    default: true
+    description: "Allow listing of owned homes"
   leettp.command.delhome:
     default: true
     description: "Allow deletion of homes"
@@ -93,7 +102,7 @@ permissions:
   leettp.command.delwarp:
     default: op
     description: "Allow deletion of warps"
-  leettp.command.listwarp:
+  leettp.command.warps:
     default: true
     description: "Allow listing of warps"
   leettp.command.tpa:
