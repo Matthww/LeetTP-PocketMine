@@ -9,7 +9,7 @@ use pocketmine\command\CommandExecutor;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
 
-class ListWarpCommand implements CommandExecutor {
+class WarpsCommand implements CommandExecutor {
 
     private $plugin;
 
@@ -19,7 +19,7 @@ class ListWarpCommand implements CommandExecutor {
 
     public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
 
-        if(!$sender->hasPermission('leettp.command.listwarp')) {
+        if(!$sender->hasPermission('leettp.command.warps')) {
             $sender->sendMessage($this->plugin->getMessageHandler()->no_permission);
             return true;
         }
