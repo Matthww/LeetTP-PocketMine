@@ -101,7 +101,7 @@ class WarpManager {
      * Gets all warps from the specified player.
      *
      * @param $player
-     * @return Array
+     * @return array
      */
     public function getWarps($player) {
         return $this->warps->get($player);

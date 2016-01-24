@@ -30,12 +30,7 @@ class DelWarpCommand implements CommandExecutor {
         }
 
         # Check if a name is specified.
-        if(count($args) < 1) {
-            $sender->sendMessage($this->plugin->getMessageHandler()->warp_name_missing);
-            return true;
-        }
-
-        if($args[0] === '') {
+        if(count($args) < 1 || $args[0] === '') {
             $sender->sendMessage($this->plugin->getMessageHandler()->warp_name_missing);
             return true;
         }

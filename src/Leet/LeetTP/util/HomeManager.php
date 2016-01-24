@@ -124,7 +124,7 @@ class HomeManager {
      * Sets a home for the specified player.
      *
      * @param $player
-     * @param Array $home
+     * @param array $home
      * @return bool|mixed
      */
     public function setHome($player, $home) {

@@ -140,12 +140,12 @@ class TPListener implements Listener {
             return;
         }
 
-        $this->plugin->getWarpManager()->addPublic($event->getPlayer()->getName(), $event->getLine(1));
+        $this->plugin->getWarpManager()->addPublic($event->getPlayer()->getName(), explode(' ', $event->getLine(1))[0]);
 
         $location = $event->getPlayer()->getLocation();
 
         $result = $this->plugin->getWarpManager()->setWarp($event->getPlayer()->getName(), [
-            'name' => $event->getLine(1),
+            'name' => explode(' ', $event->getLine(1))[0],
             'world' => $location->getLevel()->getName(),
             'x' => $location->getX(),
             'y' => $location->getY(),
@@ -157,7 +157,7 @@ class TPListener implements Listener {
 
         # Check if the warp already exists.
         if($result === null) {
-            $event->getPlayer()->sendMessage(sprintf($this->plugin->getMessageHandler()->warp_exists, $event->getLine(1)));
+            $event->getPlayer()->sendMessage(sprintf($this->plugin->getMessageHandler()->warp_exists, explode(' ', $event->getLine(1))[0]));
             return;
         }
 

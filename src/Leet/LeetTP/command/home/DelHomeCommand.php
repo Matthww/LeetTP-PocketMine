@@ -20,7 +20,7 @@ class DelHomeCommand implements CommandExecutor {
     public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
 
         if(!($sender instanceof Player)) {
-            $sender->sendMessage(TextFormat::RED.'CONSOLE cannot set home. :(');
+            $sender->sendMessage(TextFormat::RED.'CONSOLE cannot delete homes. :(');
             return true;
         }
 
