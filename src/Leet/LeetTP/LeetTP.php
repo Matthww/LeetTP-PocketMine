@@ -36,13 +36,9 @@ class LeetTP extends PluginBase {
 
     private static $plugin;
 
-    /** @var MessageHandler */
     protected $messageHandler;
-    /** @var HomeManager */
     protected $homeManager;
-    /** @var WarpManager */
     protected $warpManager;
-    /** @var TeleportManager */
     protected $teleportManager;
 
     public $spawnCooldown;
@@ -107,23 +103,23 @@ class LeetTP extends PluginBase {
         self::$plugin = null;
     }
 
-    public static function getPlugin() {
+    public static function getPlugin(): LeetTP {
         return self::$plugin;
     }
 
-    public function getMessageHandler() {
+    public function getMessageHandler(): MessageHandler {
         return $this->messageHandler;
     }
 
-    public function getHomeManager() {
+    public function getHomeManager(): HomeManager {
         return $this->homeManager;
     }
 
-    public function getWarpManager() {
+    public function getWarpManager(): WarpManager {
         return $this->warpManager;
     }
 
-    public function getTeleportManager() {
+    public function getTeleportManager(): TeleportManager {
         return $this->teleportManager;
     }
 
