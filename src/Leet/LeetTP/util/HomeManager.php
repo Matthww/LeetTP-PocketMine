@@ -65,10 +65,6 @@ class HomeManager {
         }
     }
 
-    public function disable() {
-        Flintstone::unload('homes');
-    }
-
     /**
      * Deletes all homes.
      */

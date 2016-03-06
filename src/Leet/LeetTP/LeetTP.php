@@ -89,9 +89,6 @@ class LeetTP extends PluginBase {
 
     public function onDisable() {
 
-        $this->homeManager->disable();
-        $this->warpManager->disable();
-
         # Cleanup in case of a reload.
         unset($this->messageHandler);
         unset($this->homeManager);

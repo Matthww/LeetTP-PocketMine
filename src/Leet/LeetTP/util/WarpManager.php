@@ -72,10 +72,6 @@ class WarpManager {
 
     }
 
-    public function disable() {
-        Flintstone::unload('warps');
-    }
-
     /**
      * Deletes all warps.
      */
