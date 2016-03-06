@@ -4,7 +4,6 @@ namespace Leet\LeetTP\util;
 
 use Leet\LeetTP\LeetTP;
 use Leet\LeetTP\lib\flintstone\Flintstone;
-use Leet\LeetTP\lib\flintstone\FlintstoneDB;
 use pocketmine\level\Location;
 
 class HomeManager {
@@ -13,7 +12,7 @@ class HomeManager {
     /** @var LeetTP $plugin */
     private $plugin;
 
-    /** @var FlintstoneDB $homes */
+    /** @var Flintstone $homes */
     protected $homes;
 
     private $cooldown;
@@ -31,7 +30,7 @@ class HomeManager {
      * Load homes from disk into memory.
      */
     public function load() {
-        $this->homes = Flintstone::load('homes', ['dir' => $this->plugin->getDataFolder(), 'gzip' => true]);
+        $this->homes = new Flintstone('homes', ['dir' => $this->plugin->getDataFolder(), 'gzip' => true]);
 
         # Check if we should migrate EssentialsTP data.
         if(count($this->homes->getAll()) === 0) {

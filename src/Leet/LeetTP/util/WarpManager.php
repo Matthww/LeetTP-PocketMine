@@ -4,7 +4,6 @@ namespace Leet\LeetTP\util;
 
 use Leet\LeetTP\LeetTP;
 use Leet\LeetTP\lib\flintstone\Flintstone;
-use Leet\LeetTP\lib\flintstone\FlintstoneDB;
 use pocketmine\level\Location;
 
 class WarpManager {
@@ -12,7 +11,7 @@ class WarpManager {
     /** @var LeetTP $plugin */
     private $plugin;
 
-    /** @var FlintstoneDB $warps */
+    /** @var Flintstone $warps */
     protected $warps;
     protected $public;
 
@@ -28,7 +27,7 @@ class WarpManager {
      * Load warps from disk into memory.
      */
     public function load() {
-        $this->warps = Flintstone::load('warps', ['dir' => $this->plugin->getDataFolder(), 'gzip' => true]);
+        $this->warps = new Flintstone('warps', ['dir' => $this->plugin->getDataFolder(), 'gzip' => true]);
         $this->public = [];
 
         # Check if we should migrate EssentialsTP data.
