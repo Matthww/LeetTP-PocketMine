@@ -89,7 +89,7 @@ class WarpManager {
      */
     public function getWarp($player, $warp) {
         $warp = strtolower($warp);
-        return isset($this->warps->get($player)[$warp]) ? $this->warps->get($player)[$warp] : null;
+        return $this->warps->get($player)[$warp] ?? null;
     }
 
     /**
@@ -121,7 +121,7 @@ class WarpManager {
 
         $this->warps->set($player, $warps);
 
-        return !in_array($warp, $this->warps->get($player));
+        return !in_array($warp, $this->warps->get($player), false);
 
     }
 

@@ -41,6 +41,7 @@ messages:
     warp-set: "%green%Warp set! Use /warp <name> to warp to it."
     warp-deleted: "%green%Warp successfully deleted!"
     warp-teleported: "%green%Warped to %s"
+    warp-sign-created: "%green%Warp sign created.%green%"
     tp-request-sent: "%green%Sent teleportation request to %s."
     tp-status-changed: "%green%You %s allow teleportation requests."
     tp-tpa-success: "%green%You teleported to %s."

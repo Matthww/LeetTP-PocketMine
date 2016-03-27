@@ -29,6 +29,7 @@ class MessageHandler {
     public $warp_not_deleted;
     public $warp_private_exists;
     public $warp_teleported;
+    public $warp_sign_created;
 
     public $cooldown_wait;
 
@@ -83,6 +84,7 @@ class MessageHandler {
         $this->warp_not_deleted = static::parseColors($plugin->getConfig()->getNested('messages.error.warp-not-deleted', '%red%Failed to delete that warp.'));
         $this->warp_private_exists = static::parseColors($plugin->getConfig()->getNested('messages.notify.warp-private-exists', '%yellow%A private warp with the same name exists, add \'-p\' to warp to it.'));
         $this->warp_teleported = static::parseColors($plugin->getConfig()->getNested('messages.success.warp-teleported', '%green%Warped to %s'));
+        $this->warp_sign_created = static::parseColors($plugin->getConfig()->getNested('messages.success.warp-sign-created', '%green%Warp sign created.%green%'));
 
         $this->world_not_loaded = static::parseColors($plugin->getConfig()->getNested('messages.error.world-not-loaded', '%red%Target world NOT loaded! Prevented a server crash.'));
 
