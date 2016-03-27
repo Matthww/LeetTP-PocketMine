@@ -135,38 +135,12 @@ class TPListener implements Listener {
         $warps = $this->plugin->getWarpManager()->getPublic();
 
         # Check if there is a public warp with that name already.
-        if(isset($warps[strtolower($event->getLine(1))])) {
-            $event->getPlayer()->sendMessage($this->plugin->getMessageHandler()->warp_exists);
+        if(!isset($warps[strtolower($event->getLine(1))])) {
+            $event->getPlayer()->sendMessage($this->plugin->getMessageHandler()->warp_not_exists);
             return;
         }
 
-        $this->plugin->getWarpManager()->addPublic($event->getPlayer()->getName(), explode(' ', $event->getLine(1))[0]);
-
-        $location = $event->getPlayer()->getLocation();
-
-        $result = $this->plugin->getWarpManager()->setWarp($event->getPlayer()->getName(), [
-            'name' => explode(' ', $event->getLine(1))[0],
-            'world' => $location->getLevel()->getName(),
-            'x' => $location->getX(),
-            'y' => $location->getY(),
-            'z' => $location->getZ(),
-            'yaw' => $location->getYaw(),
-            'pitch' => $location->getPitch(),
-            'public' => true
-        ]);
-
-        # Check if the warp already exists.
-        if($result === null) {
-            $event->getPlayer()->sendMessage(sprintf($this->plugin->getMessageHandler()->warp_exists, explode(' ', $event->getLine(1))[0]));
-            return;
-        }
-
-        if($result === false) {
-            $event->getPlayer()->sendMessage(TextFormat::RED.'Result is FALSE, some data is missing. Please report this.');
-            return;
-        }
-
-        $event->getPlayer()->sendMessage($this->plugin->getMessageHandler()->warp_set);
+        $event->getPlayer()->sendMessage(sprintf($this->plugin->getMessageHandler()->warp_sign_created, $event->getLine(1)));
 
     }
 }
