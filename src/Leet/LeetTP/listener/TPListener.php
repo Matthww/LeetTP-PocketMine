@@ -101,6 +101,8 @@ class TPListener implements Listener {
         # Only process further is the first line of the sign is [warp].
         if(strtoupper($tile->getText()[0]) !== '[WARP]') return;
 
+        if($event->getPlayer()->isSneaking()) return;
+
         $warps = $this->plugin->getWarpManager()->getPublic();
 
         # Check if there is a public warp with that name.
