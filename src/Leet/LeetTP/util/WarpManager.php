@@ -129,7 +129,7 @@ class WarpManager {
      * Sets a warp for the specified player.
      *
      * @param $player
-     * @param Array $warp
+     * @param array $warp
      * @return bool|mixed
      */
     public function setWarp($player, $warp) {
