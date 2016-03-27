@@ -90,12 +90,8 @@ class LeetTP extends PluginBase {
     public function onDisable() {
 
         # Cleanup in case of a reload.
-        unset($this->messageHandler);
-        unset($this->homeManager);
-        unset($this->warpManager);
-        unset($this->teleportManager);
-        unset($this->deaths);
-        unset($this->spawnCooldown);
+        unset($this->messageHandler, $this->homeManager, $this->warpManager, $this->teleportManager,
+            $this->deaths, $this->spawnCooldown);
 
         self::$plugin = null;
     }
