@@ -50,6 +50,7 @@ class MessageHandler {
     public $tp_tpahere_target_success;
     public $tp_target_rejected;
     public $tp_rejected;
+    public $tp_world_name_missing;
 
     public $back_empty;
     public $back_teleported;
@@ -103,6 +104,8 @@ class MessageHandler {
         $this->tp_tpahere_target_success = static::parseColors($plugin->getConfig()->getNested('messages.success.tp-tpahere-target-success', '%green%You were teleported to %s.'));
         $this->tp_target_rejected = static::parseColors($plugin->getConfig()->getNested('messages.success.tp-target-rejected', '%green%Teleportation request has been rejected.'));
         $this->tp_rejected = static::parseColors($plugin->getConfig()->getNested('messages.error.tp-rejected', '%red%Your teleportation request made to %s has been rejected.'));
+        $this->tp_world_name_missing = static::parseColors($plugin->getConfig()->getNested('messages.error.tp-world-name-missing', '%red%You need to specify a target world.'));
+        $this->tp_world_success = static::parseColors($plugin->getConfig()->getNested('messages.success.tp-world-success', '%green%You teleported to %s'));
 
         $this->back_empty = static::parseColors($plugin->getConfig()->getNested('messages.error.back-empty', '%red%You have to die before using /back.'));
         $this->back_teleported = static::parseColors($plugin->getConfig()->getNested('messages.success.back-teleported', '%green%You returned to your last death location.'));

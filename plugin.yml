@@ -1,6 +1,6 @@
 name: LeetTP
 main: Leet\LeetTP\LeetTP
-version: 1.1.0
+version: 1.2.0
 api: [2.0.0]
 author: ProjectInfinity
 
@@ -43,6 +43,10 @@ commands:
     description: "Asks to teleport to user"
     usage: "/tpa <player>"
     permission: "leettp.command.tpa"
+  tpworld:
+    description: "Teleports to a world"
+    usage: "/tpworld <world>"
+    permission: "leettp.command.tpworld"
   tpahere:
     description: "Asks to teleport a player to yourself"
     usage: "/tpahere <player>"
@@ -120,6 +124,9 @@ permissions:
   leettp.command.tptoggle:
     default: true
     description: "Allow user to toggle whether to allow tp requests or not"
+  leettp.command.tpworld:
+    default: true
+    description: "Allow teleportation to a different world."
   leettp.command.tpo:
     default: op
     description: "Allow teleporting to players that don't allow teleport requests"
