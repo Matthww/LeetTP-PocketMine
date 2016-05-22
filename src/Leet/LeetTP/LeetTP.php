@@ -14,6 +14,7 @@ use Leet\LeetTP\command\teleport\TpAcceptCommand;
 use Leet\LeetTP\command\teleport\TpDenyCommand;
 use Leet\LeetTP\command\teleport\TpoCommand;
 use Leet\LeetTP\command\teleport\TpoHereCommand;
+use Leet\LeetTP\command\teleport\TpWorldCommand;
 use Leet\LeetTP\command\warp\DelWarpCommand;
 use Leet\LeetTP\command\warp\WarpsCommand;
 use Leet\LeetTP\command\warp\SetWarpCommand;
@@ -76,6 +77,7 @@ class LeetTP extends PluginBase {
         $this->getCommand('tpdeny')->setExecutor(new TpDenyCommand($this));
         $this->getCommand('tpo')->setExecutor(new TpoCommand($this));
         $this->getCommand('tpohere')->setExecutor(new TpoHereCommand($this));
+        $this->getCommand('tpworld')->setExecutor(new TpWorldCommand($this));
 
         $this->getCommand('back')->setExecutor(new BackCommand($this));
 
