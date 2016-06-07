@@ -98,6 +98,12 @@ class WarpCommand implements CommandExecutor {
 
         if($privateExists === true) $sender->sendMessage($this->plugin->getMessageHandler()->warp_private_exists);
 
+        # Check if level was not set correctly.
+        if($warp->getLevel() === null) {
+            $sender->sendMessage(TextFormat::RED.'getLevel() returned null. Has one of your world folders been altered?');
+            return true;
+        }
+
         # Check if world is loaded.
         if(!$this->plugin->getServer()->isLevelLoaded($warp->getLevel()->getName())) {
             $sender->sendMessage($this->plugin->getMessageHandler()->world_not_loaded);
