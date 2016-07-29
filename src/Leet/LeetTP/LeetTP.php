@@ -7,8 +7,6 @@ use Leet\LeetTP\command\home\HomesCommand;
 use Leet\LeetTP\command\home\SetHomeCommand;
 use Leet\LeetTP\command\home\HomeCommand;
 
-use Leet\LeetTP\command\spawn\SetSpawnCommand;
-use Leet\LeetTP\command\spawn\SpawnCommand;
 use Leet\LeetTP\command\teleport\BackCommand;
 use Leet\LeetTP\command\teleport\TpAcceptCommand;
 use Leet\LeetTP\command\teleport\TpDenyCommand;
@@ -80,9 +78,6 @@ class LeetTP extends PluginBase {
         $this->getCommand('tpworld')->setExecutor(new TpWorldCommand($this));
 
         $this->getCommand('back')->setExecutor(new BackCommand($this));
-
-        $this->getCommand('spawn')->setExecutor(new SpawnCommand($this));
-        $this->getCommand('setspawn')->setExecutor(new SetSpawnCommand($this));
 
         # Register event listeners.
         $this->getServer()->getPluginManager()->registerEvents(new TPListener($this), $this);
